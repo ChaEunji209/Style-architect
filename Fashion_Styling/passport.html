@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Style Passport - Style Architect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        charcoal: '#2C2C2C',
+                        cream: '#F8F6F0',
+                        sage: '#A8B5A0',
+                        dustyrose: '#D4A5A5'
+                    },
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'body': ['Inter', 'sans-serif'],
+                        'accent': ['Cormorant Garamond', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .aurora-bg {
+            background: linear-gradient(45deg, #F8F6F0, #A8B5A0, #F8F6F0, #D4A5A5);
+            background-size: 400% 400%;
+            animation: aurora 15s ease infinite;
+        }
+        
+        @keyframes aurora {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(248, 246, 240, 0.8);
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease;
+        }
+        
+        .passport-card {
+            transition: all 0.3s ease;
+        }
+        
+        .passport-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(44, 44, 44, 0.1);
+        }
+        
+        .recommendation-item {
+            transition: all 0.3s ease;
+        }
+        
+        .recommendation-item:hover {
+            transform: translateX(8px);
+            background: rgba(168, 181, 160, 0.1);
+        }
+        
+        .style-badge {
+            background: linear-gradient(135deg, #A8B5A0, #D4A5A5);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-weight: 500;
+            font-size: 0.875rem;
+            display: inline-block;
+            margin: 0.25rem;
+        }
+        
+        @media print {
+            .no-print { display: none !important; }
+            .print-break { page-break-before: always; }
+        }
+    </style>
+</head>
+<body class="bg-cream font-body text-charcoal">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-effect border-b border-sage/20 no-print">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-sage to-dustyrose rounded-full flex items-center justify-center">
+                        <span class="text-cream font-display font-bold text-lg"><img src="resources/logo.jpg" alt="logo" style="width: 80px; height: 40px; border-radius: 50%;"></span>
+                    </div>
+                    <h1 class="font-display text-2xl font-semibold text-charcoal">Style Architect</h1>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="font-medium text-charcoal hover:text-sage transition-colors">Styling Engine</a>
+                    <a href="passport.html" class="font-medium text-sage">Style Passport</a>
+                    <a href="about.html" class="font-medium text-charcoal hover:text-sage transition-colors">About</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen aurora-bg flex items-center justify-center overflow-hidden">
+        <!-- Floating Elements -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="floating-element absolute top-20 left-10 w-20 h-20 bg-sage/20 rounded-full"></div>
+            <div class="floating-element absolute top-40 right-20 w-16 h-16 bg-dustyrose/20 rounded-full" style="animation-delay: -2s;"></div>
+            <div class="floating-element absolute bottom-32 left-1/4 w-12 h-12 bg-sage/30 rounded-full" style="animation-delay: -4s;"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 py-20 text-center relative z-10">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="font-display text-5xl md:text-7xl font-bold text-charcoal mb-6 leading-tight">
+                    Your Personal
+                    <span class="bg-gradient-to-r from-sage to-dustyrose bg-clip-text text-transparent">
+                        Style Passport
+                    </span>
+                </h1>
+                <p class="font-body text-xl md:text-2xl text-charcoal/80 mb-12 leading-relaxed max-w-2xl mx-auto">
+                    သင့်ရဲ့ ထူးခြားတဲ့ ပင်ကိုယ်လက္ခဏာတွေနဲ့ စိတ်ကြိုက်နှစ်သက်မှုတွေအတွက် သီးသန့်ဖန်တီးပေးထားတဲ့ ဖက်ရှင်နဲ့ ဆံပင်စတိုင်လ် အကြံပြုချက် လမ်းညွှန်အပြည့်အစုံ။
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <button onclick="printPassport()" class="bg-gradient-to-r from-sage to-dustyrose text-cream px-8 py-4 rounded-full font-medium text-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                        Print Your Passport
+                    </button>
+                    <button onclick="regeneratePassport()" class="border-2 border-charcoal text-charcoal px-8 py-4 rounded-full font-medium text-lg hover:bg-charcoal hover:text-cream transition-all duration-300">
+                        Create New Passport
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Style Passport Content -->
+    <section class="py-20 bg-cream">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <!-- Personal Profile Summary -->
+            <div id="profile-summary" class="mb-16 fade-in">
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-sage/10">
+                    <div class="flex items-center space-x-6 mb-8">
+                        <img src="resources/user-avatar.jpg" alt="Your Avatar" class="w-20 h-20 rounded-full object-cover border-4 border-sage/20">
+                        <div>
+                            <h2 class="font-display text-3xl font-bold text-charcoal mb-2">Your Style Profile</h2>
+                            <p class="text-charcoal/70">သင့်ရဲ့ ထူးခြားတဲ့ ပင်ကိုယ်လက္ခဏာတွေနဲ့ စိတ်ကြိုက်နှစ်သက်မှုတွေအပေါ် အခြေခံထားပါတယ်။</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-4 gap-6">
+                        <div class="text-center p-4 bg-sage/10 rounded-2xl">
+                            <div class="text-2xl mb-2">👤</div>
+                            <h4 class="font-semibold text-charcoal mb-1">အသက်</h4>
+                            <p class="text-charcoal/60" id="age-display">-</p>
+                        </div>
+                        <div class="text-center p-4 bg-dustyrose/10 rounded-2xl">
+                            <div class="text-2xl mb-2">📏</div>
+                            <h4 class="font-semibold text-charcoal mb-1">အရပ်</h4>
+                            <p class="text-charcoal/60" id="height-display">-</p>
+                        </div>
+                        <div class="text-center p-4 bg-sage/10 rounded-2xl">
+                            <div class="text-2xl mb-2">😊</div>
+                            <h4 class="font-semibold text-charcoal mb-1">မျက်နှာ ပုံစံ</h4>
+                            <p class="text-charcoal/60" id="face-display">-</p>
+                        </div>
+                        <div class="text-center p-4 bg-dustyrose/10 rounded-2xl">
+                            <div class="text-2xl mb-2">👗</div>
+                            <h4 class="font-semibold text-charcoal mb-1">ခန္တာကိုယ် ပုံစံ</h4>
+                            <p class="text-charcoal/60" id="body-display">-</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Body Archetype -->
+            <div id="body-archetype" class="mb-16 fade-in print-break">
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-sage/10">
+                    <div class="text-center mb-8">
+                        <h2 class="font-display text-4xl font-bold text-charcoal mb-4">Your Body Archetype</h2>
+                        <div class="w-24 h-1 bg-gradient-to-r from-sage to-dustyrose mx-auto rounded-full"></div>
+                    </div>
+                    
+                    <div class="text-center max-w-3xl mx-auto">
+                        <h3 class="font-display text-2xl font-semibold text-sage mb-4" id="archetype-name">The Balanced Beauty</h3>
+                        <p class="font-accent text-lg text-charcoal/80 leading-relaxed mb-8" id="archetype-description">
+                            သင့်ရဲ့ သဘာဝအတိုင်း ညီညွတ်မျှတတဲ့ ခန္ဓာကိုယ်အချိုးအစားဟာ Classic အမျိုးသမီးဆန်တဲ့ အလှကို ပိုင်ဆိုင်စေပြီး၊ ခါးကိုပေါ်လွင်စေမယ့် အဝတ်အစားတွေနဲ့ဆိုရင် ပိုမိုလှပတင့်တယ်နေမှာပါ။
+                        </p>
+                        
+                        <div class="grid md:grid-cols-3 gap-6 mt-8">
+                            <div class="p-6 bg-sage/10 rounded-2xl">
+                                <div class="text-3xl mb-3">✨</div>
+                                <h4 class="font-semibold text-charcoal mb-2">Best Features</h4>
+                                <p class="text-sm text-charcoal/70" id="best-features">ထင်ရှားသော ခါးအလှနှင့် ညီညွတ်မျှတသော ခန္ဓာကိုယ်အချိုးအစား။</p>
+                            </div>
+                            <div class="p-6 bg-dustyrose/10 rounded-2xl">
+                                <div class="text-3xl mb-3">🎯</div>
+                                <h4 class="font-semibold text-charcoal mb-2">Styling Goal</h4>
+                                <p class="text-sm text-charcoal/70" id="styling-goal">ခန္တာကိုယ် ကောက်ကြောင်း အလှတရားတွေနဲ့ ခါးပုံစံကို ပေါ်လွင်အောင်ပြသပါ။</p>
+                            </div>
+                            <div class="p-6 bg-sage/10 rounded-2xl">
+                                <div class="text-3xl mb-3">💡</div>
+                                <h4 class="font-semibold text-charcoal mb-2">Key Tip</h4>
+                                <p class="text-sm text-charcoal/70" id="key-tip">ခါးပတ်များ (သို့မဟုတ်) ခါးကိုအသားပေးချုပ်လုပ်ထားသည့် အဝတ်အစားများဖြင့် သင့်ရဲ့ခါးအလှကို ပေါ်လွင်စေပါ။</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fashion Silhouettes -->
+            <div id="fashion-silhouettes" class="mb-16 fade-in print-break">
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-sage/10">
+                    <div class="text-center mb-8">
+                        <h2 class="font-display text-4xl font-bold text-charcoal mb-4">Fashion Silhouette Recommendations</h2>
+                        <div class="w-24 h-1 bg-gradient-to-r from-sage to-dustyrose mx-auto rounded-full"></div>
+                    </div>
+                    
+                    <div class="max-w-4xl mx-auto">
+                        <p class="font-accent text-lg text-charcoal/80 text-center mb-8 leading-relaxed" id="fashion-description">
+                            ခါးကိုပေါ်လွင်စေပြီး ခန္ဓာကိုယ်အချိုးအစားအတိုင်း လိုက်ဖက်ညီမယ့် ဝတ်စုံတွေနဲ့ သင့်ရဲ့ သဘာဝအလှတရားတွေကို ထင်ရှားအောင် ပြသလိုက်ပါ။
+                        </p>
+                        
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <h3 class="font-display text-xl font-semibold text-charcoal mb-6">Recommended Silhouettes</h3>
+                                <div class="space-y-3" id="silhouette-list">
+                                    <!-- Populated by JavaScript -->
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3 class="font-display text-xl font-semibold text-charcoal mb-6">Styling Tips</h3>
+                                <div class="space-y-3" id="styling-tips-list">
+                                    <!-- Populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Height-Specific Recommendations -->
+                        <div class="mt-12 p-6 bg-gradient-to-r from-sage/10 to-dustyrose/10 rounded-2xl">
+                            <h3 class="font-display text-xl font-semibold text-charcoal mb-4">Height-Specific Guidance</h3>
+                            <div id="height-recommendations">
+                                <!-- Populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hair Formula -->
+            <div id="hair-formula" class="mb-16 fade-in print-break">
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-sage/10">
+                    <div class="text-center mb-8">
+                        <h2 class="font-display text-4xl font-bold text-charcoal mb-4">The Ultimate Hair Formula</h2>
+                        <div class="w-24 h-1 bg-gradient-to-r from-sage to-dustyrose mx-auto rounded-full"></div>
+                    </div>
+                    
+                    <div class="max-w-4xl mx-auto text-center">
+                        <div class="bg-gradient-to-r from-sage/20 to-dustyrose/20 p-8 rounded-3xl mb-8">
+                            <h3 class="font-display text-2xl font-semibold text-charcoal mb-4">Your Perfect Combination</h3>
+                            <div class="flex flex-wrap justify-center items-center gap-4 text-lg font-semibold text-charcoal" id="hair-formula-display">
+                                <!-- Populated by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <p class="font-accent text-lg text-charcoal/80 mb-8 leading-relaxed" id="hair-description">
+                            <!-- Populated by JavaScript -->
+                        </p>
+                        
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="p-6 bg-sage/10 rounded-2xl">
+                                <h4 class="font-semibold text-charcoal mb-3">Length Options</h4>
+                                <div class="space-y-2" id="length-options">
+                                    <!-- Populated by JavaScript -->
+                                </div>
+                            </div>
+                            
+                            <div class="p-6 bg-dustyrose/10 rounded-2xl">
+                                <h4 class="font-semibold text-charcoal mb-3">Parting Styles</h4>
+                                <div class="space-y-2" id="parting-options">
+                                    <!-- Populated by JavaScript -->
+                                </div>
+                            </div>
+                            
+                            <div class="p-6 bg-sage/10 rounded-2xl">
+                                <h4 class="font-semibold text-charcoal mb-3">Texture Options</h4>
+                                <div class="space-y-2" id="texture-options">
+                                    <!-- Populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Style Personality -->
+            <div id="style-personality" class="mb-16 fade-in print-break">
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-sage/10">
+                    <div class="text-center mb-8">
+                        <h2 class="font-display text-4xl font-bold text-charcoal mb-4">Your Style Personality</h2>
+                        <div class="w-24 h-1 bg-gradient-to-r from-sage to-dustyrose mx-auto rounded-full"></div>
+                    </div>
+                    
+                    <div class="max-w-4xl mx-auto text-center">
+                        <div class="mb-8">
+                            <div class="text-6xl mb-4" id="personality-emoji">✨</div>
+                            <h3 class="font-display text-2xl font-semibold text-sage mb-4" id="personality-name">Trendy Fashionista</h3>
+                            <p class="font-accent text-lg text-charcoal/80 leading-relaxed" id="personality-description">
+                                You love staying current with fashion trends and aren't afraid to make bold style statements.
+                            </p>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="font-display text-xl font-semibold text-charcoal mb-4">Preferred Occasions</h4>
+                                <div class="flex flex-wrap gap-2" id="occasion-tags">
+                                    <!-- Populated by JavaScript -->
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-display text-xl font-semibold text-charcoal mb-4">Age-Appropriate Tips</h4>
+                                <div class="space-y-2" id="age-tips">
+                                    <!-- Populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="text-center fade-in no-print">
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <button onclick="printPassport()" class="bg-gradient-to-r from-sage to-dustyrose text-cream px-8 py-4 rounded-full font-medium text-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                        📄 Print Your Passport
+                    </button>
+                    <button onclick="regeneratePassport()" class="border-2 border-charcoal text-charcoal px-8 py-4 rounded-full font-medium text-lg hover:bg-charcoal hover:text-cream transition-all duration-300">
+                        🔄 Create New Passport
+                    </button>
+                    <button onclick="sharePassport()" class="border-2 border-sage text-sage px-8 py-4 rounded-full font-medium text-lg hover:bg-sage hover:text-cream transition-all duration-300">
+                        📤 Share Results
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-charcoal text-cream py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="flex items-center justify-center space-x-3 mb-6">
+                <div class="w-10 h-10 bg-gradient-to-br from-sage to-dustyrose rounded-full flex items-center justify-center">
+                    <span class="text-cream font-display font-bold text-lg"><img src="resources/logo.jpg" alt="logo" style="width: 80px; height: 40px; border-radius: 50%;"></span>
+                </div>
+                <h3 class="font-display text-2xl font-semibold">Style Architect</h3>
+            </div>
+            <p class="text-cream/70 font-body">
+                © 2025 Style Architect. Crafting personalized style experiences with elegance and precision.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Passport page functionality
+        let styleResults = null;
+
+        // Initialize passport page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadStyleResults();
+            setupIntersectionObserver();
+            initializeAnimations();
+        });
+
+        function loadStyleResults() {
+            const stored = localStorage.getItem('styleResults');
+            if (stored) {
+                styleResults = JSON.parse(stored);
+                populatePassport();
+            } else {
+                // Fallback data for direct access
+                styleResults = {
+                    profile: {
+                        age: 'teen',
+                        height: 'average',
+                        faceShape: 'oval',
+                        bodyShape: 'hourglass',
+                        stylePersonality: 'classic',
+                        occasions: ['work', 'casual']
+                    },
+                    recommendations: {
+                        hair: {
+                            formula: 'အရှည် + အလယ်ခြွ + အဖြောင့်',
+                            description: 'ဘဲဥပုံမျက်နှာကျနတွေဟာ ဘယ်လိုဆံပင်ပုံစံမျိုးနဲ့မဆို လိုက်ဖက်ညီတဲ့အတွက် စတိုင်လ်အမျိုးမျိုးကို စိတ်ကြိုက်ပြောင်းလဲနိုင်ပါတယ်။ သင့်ရဲ့ သဘာဝအတိုင်း ညီညာလှပတဲ့ မျက်နှာအချိုးအစားကို ပိုမိုပေါ်လွင်စေဖို့ပဲ အဓိကထားပြီး ပြင်ဆင်လိုက်ပါ။',
+                            recommendations: {
+                                length: ['ဆံပင်ရှည်', 'ဆံပင်အလတ်စား', 'ဆံပင်တို'],
+                                parting: ['အလယ်ခွဲ', 'ဘေးခွဲ'],
+                                texture: ['ဆံပင်အဖြောင့်', 'လှိုင်းတွန့်', 'ဆံပင်လိပ်']
+                            }
+                        },
+                        fashion: {
+                            archetype: {
+                                name: 'The Balanced Beauty',
+                                description: 'သင့်ရဲ့ သဘာဝအတိုင်း ညီညွတ်မျှတတဲ့ ခန္ဓာကိုယ်အချိုးအစားဟာ ခေတ်မမီတော့တဲ့ (Classic) အမျိုးသမီးဆန်တဲ့ အလှကို ပိုင်ဆိုင်စေပြီး၊ ခါးကိုပေါ်လွင်စေမယ့် အဝတ်အစားတွေနဲ့ဆိုရင် ပိုမိုလှပတင့်တယ်နေမှာပါ။'
+                            },
+                            silhouettes: ['ရင်စေ့ဝတ်စုံများ', 'ခါးပတ်ပါသော ကုတ်အင်္ကျီရှည်များ', 'ခါးမြင့်ဘောင်းဘီများ', 'ကိုယ်ကျပ်အင်္ကျီများ'],
+                            description: 'ခါးကိုပေါ်လွင်စေပြီး ခန္ဓာကိုယ်အချိုးအစားအတိုင်း လိုက်ဖက်ညီမယ့် ဝတ်စုံတွေနဲ့ သင့်ရဲ့ သဘာဝအလှတရားတွေကို ထင်ရှားအောင် ပြသလိုက်ပါ။',
+                            tips: ['ခါးပတ်များ သို့မဟုတ် ခါးကိုအသားပေးချုပ်လုပ်ထားသည့် အဝတ်အစားများဖြင့် သင့်ခါးအလှကို ပိုမိုပေါ်လွင်စေပါ', 'ခန္ဓာကိုယ်ပေါ်တွင် ပုံကျလှပစွာ ဝဲကျနေမည့် ပိတ်စအမျိုးအစားများကို ရွေးချယ်ပါ', 'ပွယောင်းယောင်းနိုင်ပြီး ပုံစံမရှိသော အဝတ်အစားများကို ရှောင်ကြဉ်ပါ'],
+                            heightFocus: {
+                                focus: 'စတိုင်လ်အမျိုးမျိုးကို စိတ်ကြိုက်ပြောင်းလဲနိုင်သော ညီညွတ်မျှတသည့် အချိုးအစား။',
+                                recommendations: ['ဒူးအောက်အရှည် ဝတ်စုံများ', 'အထက်အောက် ညီညွတ်မျှတသော ဒီဇိုင်းများ', 'အချိုးအစား အမျိုးမျိုးကို ရောနှောဝတ်ဆင်ခြင်း', 'ပုံမှန်ဆိုဒ် (Standard sizing) ဝတ်စုံများ']
+                            }
+                        },
+                        style: {
+                            personality: 'ရိုးရှင်းခန့်ညားသော (Classic)',
+                            occasions: ['ရုံးတက်/အလုပ်', 'ပေါ့ပေါ့ပါးပါး'],
+                            ageAppropriate: {
+                                focus: 'ခေတ်မီပြီး ခန့်ညားထည်ဝါသော စတိုင်လ်များ',
+                                tips: ['လက်ရှိဖက်ရှင်ရေစီးကြောင်းသစ်များကို စမ်းသပ်ဝတ်ဆင်ကြည့်ပါ', 'အရည်အသွေးကောင်းပြီး စတိုင်လ်မျိုးစုံ ပြောင်းလဲနိုင်မည့် ဝတ်စုံများတွင် ရင်းနှီးမြှုပ်နှံပါ', 'သင့်ရဲ့ ကိုယ်ပိုင်ဟန် (Signature style) တစ်ခုကို ဖန်တီးပါ']
+                            }
+                        }
+                    }
+                };
+                populatePassport();
+            }
+        }
+
+        function populatePassport() {
+            if (!styleResults) return;
+
+            // Profile Summary
+            document.getElementById('age-display').textContent = formatText(styleResults.profile.age);
+            document.getElementById('height-display').textContent = formatText(styleResults.profile.height);
+            document.getElementById('face-display').textContent = formatText(styleResults.profile.faceShape);
+            document.getElementById('body-display').textContent = formatText(styleResults.profile.bodyShape.replace('-', ' '));
+
+            // Body Archetype
+            document.getElementById('archetype-name').textContent = styleResults.recommendations.fashion.archetype.name;
+            document.getElementById('archetype-description').textContent = styleResults.recommendations.fashion.archetype.description;
+
+            // Fashion Silhouettes
+            document.getElementById('fashion-description').textContent = styleResults.recommendations.fashion.description;
+            
+            const silhouetteList = document.getElementById('silhouette-list');
+            styleResults.recommendations.fashion.silhouettes.forEach(silhouette => {
+                const item = document.createElement('div');
+                item.className = 'recommendation-item p-3 rounded-lg border border-sage/10';
+                item.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <span class="text-sage">✓</span>
+                        <span class="text-charcoal">${silhouette}</span>
+                    </div>
+                `;
+                silhouetteList.appendChild(item);
+            });
+
+            // Styling Tips
+            const tipsList = document.getElementById('styling-tips-list');
+            styleResults.recommendations.fashion.tips.forEach(tip => {
+                const item = document.createElement('div');
+                item.className = 'recommendation-item p-3 rounded-lg border border-sage/10';
+                item.innerHTML = `
+                    <div class="flex items-start space-x-3">
+                        <span class="text-dustyrose mt-1">💡</span>
+                        <span class="text-charcoal text-sm">${tip}</span>
+                    </div>
+                `;
+                tipsList.appendChild(item);
+            });
+
+            // Height Recommendations
+            const heightRecs = document.getElementById('height-recommendations');
+            heightRecs.innerHTML = `
+                <p class="text-charcoal/80 mb-4">${styleResults.recommendations.fashion.heightFocus.focus}</p>
+                <div class="grid md:grid-cols-2 gap-4">
+                    ${styleResults.recommendations.fashion.heightFocus.recommendations.map(rec => `
+                        <div class="flex items-center space-x-2">
+                            <span class="text-sage">•</span>
+                            <span class="text-charcoal text-sm">${rec}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+
+            // Hair Formula
+            document.getElementById('hair-formula-display').textContent = styleResults.recommendations.hair.formula;
+            document.getElementById('hair-description').textContent = styleResults.recommendations.hair.description;
+
+            // Hair Options
+            const lengthOptions = document.getElementById('length-options');
+            styleResults.recommendations.hair.recommendations.length.forEach(length => {
+                const item = document.createElement('div');
+                item.className = 'text-sm text-charcoal';
+                item.textContent = length;
+                lengthOptions.appendChild(item);
+            });
+
+            const partingOptions = document.getElementById('parting-options');
+            styleResults.recommendations.hair.recommendations.parting.forEach(parting => {
+                const item = document.createElement('div');
+                item.className = 'text-sm text-charcoal';
+                item.textContent = parting;
+                partingOptions.appendChild(item);
+            });
+
+            const textureOptions = document.getElementById('texture-options');
+            styleResults.recommendations.hair.recommendations.texture.forEach(texture => {
+                const item = document.createElement('div');
+                item.className = 'text-sm text-charcoal';
+                item.textContent = texture;
+                textureOptions.appendChild(item);
+            });
+
+            // Style Personality
+            const personalityData = getPersonalityData(styleResults.profile.stylePersonality);
+            document.getElementById('personality-emoji').textContent = personalityData.emoji;
+            document.getElementById('personality-name').textContent = personalityData.name;
+            document.getElementById('personality-description').textContent = personalityData.description;
+
+            // Occasion Tags
+            const occasionTags = document.getElementById('occasion-tags');
+            styleResults.profile.occasions.forEach(occasion => {
+                const tag = document.createElement('span');
+                tag.className = 'style-badge';
+                tag.textContent = formatText(occasion);
+                occasionTags.appendChild(tag);
+            });
+
+            // Age Tips
+            const ageTips = document.getElementById('age-tips');
+            styleResults.recommendations.style.ageAppropriate.tips.forEach(tip => {
+                const item = document.createElement('div');
+                item.className = 'flex items-start space-x-2';
+                item.innerHTML = `
+                    <span class="text-sage mt-1">•</span>
+                    <span class="text-charcoal text-sm">${tip}</span>
+                `;
+                ageTips.appendChild(item);
+            });
+        }
+
+        function getPersonalityData(personality) {
+            const personalities = {
+                classic: {
+                    emoji: '👗',
+                    name: 'ရိုးရှင်းခန့်ညားသောစတိုင်လ် (Classic Elegance)',
+                    description: 'သင်ဟာ ခေတ်မမီတော့ဘူးဆိုတာမျိုးမရှိဘဲ အမြဲတမ်းတင့်တယ်နေမယ့် စတိုင်လ်မျိုးကို နှစ်သက်သူဖြစ်ပါတယ်။ အဝတ်အစားရဲ့ အရည်အသွေးနဲ့ သေသပ်သပ်ရပ်မှုဟာ သင့်အတွက် အဓိကဦးစားပေးတွေပါပဲ။'
+                },
+                trendy: {
+                    emoji: '✨',
+                    name: 'ခေတ်မီဆန်းသစ်သောစတိုင်လ် (Trendy Fashionista)',
+                    description: 'သင်ဟာ လက်ရှိဖက်ရှင်ရေစီးကြောင်းတွေကို နောက်မကျအောင် လိုက်ဝတ်ရတာကို နှစ်သက်ပြီး၊ ထူးခြားပေါ်လွင်တဲ့ ဖက်ရှင်တွေကို ဝတ်ဆင်ဖို့လည်း ဝန်မလေးတဲ့သူတစ်ယောက် ဖြစ်ပါတယ်။'
+                },
+                casual: {
+                    emoji: '🌿',
+                    name: 'ပေါ့ပေါ့ပါးပါးစတိုင်လ် (Casual Comfort)',
+                    description: 'သင်ဟာ သက်သောင့်သက်သာရှိပြီး လွတ်လပ်မှုကို အဓိကဦးစားပေးပေမဲ့၊ သပ်သပ်ရပ်ရပ်နဲ့ ကြည့်ကောင်းနေမယ့် အသွင်အပြင်မျိုးကို ပိုင်ဆိုင်ထားသူ ဖြစ်ပါတယ်။'
+                }
+            };
+            return personalities[personality] || personalities.classic;
+        }
+
+        function formatText(text) {
+            return text.split(' ').map(word => 
+                word.charAt(0).toUpperCase() + word.slice(1)
+            ).join(' ');
+        }
+
+        function setupIntersectionObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        function initializeAnimations() {
+            anime({
+                targets: '.aurora-bg h1',
+                opacity: [0, 1],
+                translateY: [50, 0],
+                duration: 1000,
+                easing: 'easeOutQuart',
+                delay: 300
+            });
+        }
+
+        function printPassport() {
+            window.print();
+        }
+
+        function regeneratePassport() {
+            window.location.href = 'index.html';
+        }
+
+        function sharePassport() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'My Style Passport - Style Architect',
+                    text: 'Check out my personalized style recommendations!',
+                    url: window.location.href
+                });
+            } else {
+                // Fallback: copy to clipboard
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    alert('Link copied to clipboard!');
+                });
+            }
+        }
+    </script>
+</body>
+</html>

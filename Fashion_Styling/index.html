@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Architect - Personal Styling Engine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        charcoal: '#2C2C2C',
+                        cream: '#F8F6F0',
+                        sage: '#A8B5A0',
+                        dustyrose: '#D4A5A5'
+                    },
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'body': ['Inter', 'sans-serif'],
+                        'accent': ['Cormorant Garamond', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .aurora-bg {
+            background: linear-gradient(45deg, #F8F6F0, #A8B5A0, #F8F6F0, #D4A5A5);
+            background-size: 400% 400%;
+            animation: aurora 15s ease infinite;
+        }
+        
+        @keyframes aurora {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(248, 246, 240, 0.8);
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .step-indicator {
+            transition: all 0.3s ease;
+        }
+        
+        .step-indicator.active {
+            background: linear-gradient(135deg, #A8B5A0, #D4A5A5);
+            transform: scale(1.1);
+        }
+        
+        .selection-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .selection-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(44, 44, 44, 0.1);
+        }
+        
+        .selection-card.selected {
+            border: 2px solid #A8B5A0;
+            background: rgba(168, 181, 160, 0.1);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease;
+        }
+    </style>
+</head>
+<body class="bg-cream font-body text-charcoal">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-effect border-b border-sage/20">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-sage to-dustyrose rounded-full flex items-center justify-center">
+                        <span class="text-cream font-display font-bold text-lg"><img src="resources/logo.jpg" alt="logo" style="width: 80px; height: 40px; border-radius: 50%;"></span>
+                    </div>
+                    <h1 class="font-display text-2xl font-semibold text-charcoal">Style Architect</h1>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="font-medium text-charcoal hover:text-sage transition-colors">Styling Engine</a>
+                    <a href="passport.html" class="font-medium text-charcoal hover:text-sage transition-colors">Style Passport</a>
+                    <a href="about.html" class="font-medium text-charcoal hover:text-sage transition-colors">About</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen aurora-bg flex items-center justify-center overflow-hidden">
+        <!-- Floating Elements -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="floating-element absolute top-20 left-10 w-20 h-20 bg-sage/20 rounded-full"></div>
+            <div class="floating-element absolute top-40 right-20 w-16 h-16 bg-dustyrose/20 rounded-full" style="animation-delay: -2s;"></div>
+            <div class="floating-element absolute bottom-32 left-1/4 w-12 h-12 bg-sage/30 rounded-full" style="animation-delay: -4s;"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 py-20 text-center relative z-10">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="font-display text-5xl md:text-7xl font-bold text-charcoal mb-6 leading-tight">
+                    Discover Your
+                    <span class="bg-gradient-to-r from-sage to-dustyrose bg-clip-text text-transparent">
+                        Perfect Style
+                    </span>
+                </h1>
+                <p class="font-body text-xl md:text-2xl text-charcoal/80 mb-12 leading-relaxed max-w-2xl mx-auto">
+                    သင့်ရဲ့ ထူးခြားတဲ့ ခန္ဓာကိုယ်အချိုးအစားနဲ့ ပင်ကိုယ်လက္ခဏာတွေအပေါ် မူတည်ပြီး အလိုက်ဖက်ဆုံး စတိုင်လ်တွေကို ဖော်ထုတ်ပေးမယ့် အဆင့်မြင့် စတိုင်လ်လမ်းညွှန်။
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <button onclick="startStylingProcess()" class="bg-gradient-to-r from-sage to-dustyrose text-cream px-8 py-4 rounded-full font-medium text-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                        Begin Style Analysis
+                    </button>
+                    <button onclick="scrollToLearnMore()" class="border-2 border-charcoal text-charcoal px-8 py-4 rounded-full font-medium text-lg hover:bg-charcoal hover:text-cream transition-all duration-300">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Styling Process -->
+    <section id="styling-process" class="py-20 bg-cream">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Process Header -->
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-charcoal mb-6">
+                    Create Your Style Passport
+                </h2>
+                <p class="font-body text-lg text-charcoal/70 max-w-2xl mx-auto">
+                    သင့်ရဲ့ ခန္တာကိုယ် အချိုးအစားနှင့် မျက်နှာကျပုံကို အခြေခံပြီး သင်နဲ့ အလိုက်ဖက်ဆုံးဖြစ်မယ့် ဖက်ရှင်နဲ့ ဆံပင်စတိုင်လ် အကြံပြုချက်တွေကို ကျွန်ုပ်တို့က စနစ်တကျ ရွေးချယ်ပေးသွားမှာပါ။
+                </p>
+            </div>
+
+            <!-- Progress Indicator -->
+            <div class="flex justify-center mb-12 fade-in">
+                <div class="flex items-center space-x-4">
+                    <div class="step-indicator w-12 h-12 rounded-full bg-sage/20 flex items-center justify-center text-sage font-semibold" data-step="1">1</div>
+                    <div class="w-16 h-1 bg-sage/20 rounded"></div>
+                    <div class="step-indicator w-12 h-12 rounded-full bg-sage/20 flex items-center justify-center text-sage font-semibold" data-step="2">2</div>
+                    <div class="w-16 h-1 bg-sage/20 rounded"></div>
+                    <div class="step-indicator w-12 h-12 rounded-full bg-sage/20 flex items-center justify-center text-sage font-semibold" data-step="3">3</div>
+                    <div class="w-16 h-1 bg-sage/20 rounded"></div>
+                    <div class="step-indicator w-12 h-12 rounded-full bg-sage/20 flex items-center justify-center text-sage font-semibold" data-step="4">4</div>
+                </div>
+            </div>
+
+            <!-- Step 1: Demographics -->
+            <div id="step-1" class="step-content">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h3 class="font-display text-3xl font-semibold text-charcoal mb-4">Basic Information</h3>
+                        <p class="font-body text-lg text-charcoal/70">သင့်နဲ့ အလိုက်ဖက်ဆုံး ဖြစ်မယ့် စတိုင်လ်တွေကို ရွေးချယ်ပေးနိုင်ဖို့ သင့်ရဲ့ အချက်အလက်လေးတွေကို ဖြည့်စွက်ပေးပါ။</p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- Age Selection -->
+                        <div class="space-y-6">
+                            <h4 class="font-display text-xl font-medium text-charcoal">အသက်</h4>
+                            <div class="space-y-4">
+                                <div class="selection-card bg-white p-6 rounded-2xl shadow-sm border border-sage/10" onclick="selectAge('child')">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="w-16 h-16 bg-gradient-to-br from-sage/20 to-dustyrose/20 rounded-full flex items-center justify-center">
+                                            <span class="text-2xl">👧</span>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-semibold text-lg text-charcoal">Child (8-12 years)</h5>
+                                            <p class="text-charcoal/60">Playful, comfortable, age-appropriate styles</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="selection-card bg-white p-6 rounded-2xl shadow-sm border border-sage/10" onclick="selectAge('teen')">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="w-16 h-16 bg-gradient-to-br from-sage/20 to-dustyrose/20 rounded-full flex items-center justify-center">
+                                            <span class="text-2xl">👩</span>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-semibold text-lg text-charcoal">Teen/Adult (13+ years)</h5>
+                                            <p class="text-charcoal/60">Trending, mature, sophisticated styles</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Height Selection -->
+                        <div class="space-y-6">
+                            <h4 class="font-display text-xl font-medium text-charcoal">အရပ်</h4>
+                            <div class="space-y-4">
+                                <div class="selection-card bg-white p-6 rounded-2xl shadow-sm border border-sage/10" onclick="selectHeight('petite')">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="w-16 h-16 bg-gradient-to-br from-sage/20 to-dustyrose/20 rounded-full flex items-center justify-center">
+                                            <span class="text-2xl">🌱</span>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-semibold text-lg text-charcoal">Petite (4'9" - 5'1")</h5>
+                                            <p class="text-charcoal/60">High-waisted, vertical lines</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="selection-card bg-white p-6 rounded-2xl shadow-sm border border-sage/10" onclick="selectHeight('average')">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="w-16 h-16 bg-gradient-to-br from-sage/20 to-dustyrose/20 rounded-full flex items-center justify-center">
+                                            <span class="text-2xl">🌿</span>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-semibold text-lg text-charcoal">Average (5'2" - 5'5")</h5>
+                                            <p class="text-charcoal/60">Balanced proportions</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="selection-card bg-white p-6 rounded-2xl shadow-sm border border-sage/10" onclick="selectHeight('tall')">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="w-16 h-16 bg-gradient-to-br from-sage/20 to-dustyrose/20 rounded-full flex items-center justify-center">
+                                            <span class="text-2xl">🌳</span>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-semibold text-lg text-charcoal">Tall (Above 5'5")</h5>
+                                            <p class="text-charcoal/60">Bold patterns, varied proportions</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Face Shape -->
+            <div id="step-2" class="step-content hidden">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h3 class="font-display text-3xl font-semibold text-charcoal mb-4">Face Shape Analysis</h3>
+                        <p class="font-body text-lg text-charcoal/70">သင့်ရဲ့ မျက်နှာပုံစံနဲ့ အကိုက်ညီဆုံးပုံစံကို ရွေးချယ်လိုက်ပါ။</p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-5 gap-6">
+                        <div class="selection-card bg-white p-6 rounded-2xl shadow-sm border border-sage/10 text-center" onclick="selectFaceShape('oval')">
+                            <img src="resources/face-oval.jpg" alt="Oval Face Shape" class="w-24 h-24 mx-auto mb-4 rounded-full object-cover">
+                            <h5 class="font-semibold text-lg text-charcoal mb-2">Oval</h5>
+                            <p class="text-sm text-charcoal/60">မျက်နှာအချိုးအစား ညီပြီး စတိုင်လ်အစုံနဲ့ လိုက်ဖက်တဲ့ပုံစံ။</p>
+                        </div>
+                        
+                        <div class="selection-card bg-white p-6 rounded-2xl shadow-sm border border-sage/10 text-center" onclick="selectFaceShape('round')">
+                            <img src="resources/face-round.jpg" alt="Round Face Shape" class="w-24 h-24 mx-auto mb-4 rounded-full object-cover">
+                            <h5 class="font-semibold text-lg text-charcoal mb-2">Round</h5>
+                            <p class="text-sm text-charcoal/60">ပါးပြည့်ပြည့်လေးနဲ့မျက်နှာဝိုင်းဝိုင်းပုံစံ။</p>
+                        </div>
+                        
+                        <div class="selection-card bg-white p-6 rounded-2xl shadow-sm border border-sage/10 text-center" onclick="selectFaceShape('square')">
+                            <img src="resources/face-square.jpg" alt="Square Face Shape" class="w-24 h-24 mx-auto mb-4 rounded-full object-cover">
+                            <h5 class="font-semibold text-lg text-charcoal mb-2">Square</h5>
+                            <p class="text-sm text-charcoal/60">မေးရိုးပေါ်လွင်ပြီး လေးထောင့်ကျကျပုံစံ။</p>
+                        </div>
+                        
+                        <div class="selection-card bg-white p-6 rounded-2xl shadow-sm border border-sage/10 text-center" onclick="selectFaceShape('heart')">
+                            <img src="resources/face-heart.jpg" alt="Heart Face Shape" class="w-24 h-24 mx-auto mb-4 rounded-full object-cover">
+                            <h5 class="font-semibold text-lg text-charcoal mb-2">Heart</h5>
+                            <p class="text-sm text-charcoal/60">နဖူးကျယ်ပြီး မေးစေ့သွယ်သွယ်ပုံစံ။</p>
+                        </div>
+                        
+                        <div class="selection-card bg-white p-6 rounded-2xl shadow-sm border border-sage/10 text-center" onclick="selectFaceShape('diamond')">
+                            <img src="resources/face-diamond.jpg" alt="Diamond Face Shape" class="w-24 h-24 mx-auto mb-4 rounded-full object-cover">
+                            <h5 class="font-semibold text-lg text-charcoal mb-2">Diamond</h5>
+                            <p class="text-sm text-charcoal/60">ပါးရိုးမြင့်မြင့်နဲ့ မေးစေ့သွယ်တဲ့ပုံစံ။</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Body Shape -->
+            <div id="step-3" class="step-content hidden">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h3 class="font-display text-3xl font-semibold text-charcoal mb-4">Body Shape Analysis</h3>
+                        <p class="font-body text-lg text-charcoal/70">သင့်ရဲ့ ခန္တာကိုယ် အချိုးအစားနဲ့ အကိုက်ညီဆုံးပုံစံကို ရွေးချယ်လိုက်ပါ။</p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-5 gap-6">
+                        <div class="selection-card bg-white p-6 rounded-2xl shadow-sm border border-sage/10 text-center" onclick="selectBodyShape('hourglass')">
+                            <img src="resources/body-hourglass.jpg" alt="Hourglass Body Shape" class="w-24 h-32 mx-auto mb-4 object-cover">
+                            <h5 class="font-semibold text-lg text-charcoal mb-2">Hourglass</h5>
+                            <p class="text-sm text-charcoal/60">ခါးသိမ်သိမ်လေးနဲ့ အချိုးအစား ပြေပြစ်တဲ့ပုံစံ။</p>
+                        </div>
+                        
+                        <div class="selection-card bg-white p-6 rounded-2xl shadow-sm border border-sage/10 text-center" onclick="selectBodyShape('pear')">
+                            <img src="resources/body-pear.jpg" alt="Pear Body Shape" class="w-24 h-32 mx-auto mb-4 object-cover">
+                            <h5 class="font-semibold text-lg text-charcoal mb-2">Pear</h5>
+                            <p class="text-sm text-charcoal/60">ပခုံးကျဉ်းပြီး အောက်ပိုင်း (တင်ပါး) ကားတဲ့ပုံစံ။</p>
+                        </div>
+                        
+                        <div class="selection-card bg-white p-6 rounded-2xl shadow-sm border border-sage/10 text-center" onclick="selectBodyShape('apple')">
+                            <img src="resources/body-apple.jpg" alt="Apple Body Shape" class="w-24 h-32 mx-auto mb-4 object-cover">
+                            <h5 class="font-semibold text-lg text-charcoal mb-2">Apple</h5>
+                            <p class="text-sm text-charcoal/60">ဗိုက်ပိုင်း ပြည့်ပြည့်လေးနဲ့ ခြေတံသွယ်သွယ်ပုံစံ။</p>
+                        </div>
+                        
+                        <div class="selection-card bg-white p-6 rounded-2xl shadow-sm border border-sage/10 text-center" onclick="selectBodyShape('rectangle')">
+                            <img src="resources/body-rectangle.jpg" alt="Rectangle Body Shape" class="w-24 h-32 mx-auto mb-4 object-cover">
+                            <h5 class="font-semibold text-lg text-charcoal mb-2">Rectangle</h5>
+                            <p class="text-sm text-charcoal/60">ခါးသိပ်မရှိဘဲ အပေါ်အောက် တဖြောင့်တည်းရှိတဲ့ပုံစံ။</p>
+                        </div>
+                        
+                        <div class="selection-card bg-white p-6 rounded-2xl shadow-sm border border-sage/10 text-center" onclick="selectBodyShape('inverted-triangle')">
+                            <img src="resources/body-triangle.jpg" alt="Inverted Triangle Body Shape" class="w-24 h-32 mx-auto mb-4 object-cover">
+                            <h5 class="font-semibold text-lg text-charcoal mb-2">Inverted Triangle</h5>
+                            <p class="text-sm text-charcoal/60">ပခုံးကျယ်ပြီး အောက်ပိုင်း သွယ်သွားတဲ့ပုံစံ။</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Style Preferences -->
+            <div id="step-4" class="step-content hidden">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h3 class="font-display text-3xl font-semibold text-charcoal mb-4">Style Preferences</h3>
+                        <p class="font-body text-lg text-charcoal/70">သင့်ရဲ့ စတိုင်လ်က ဘယ်လိုမျိုးလဲဆိုတာ ပြောပြပေးပါ။</p>
+                    </div>
+                    
+                    <div class="space-y-8">
+                        <!-- Style Personality -->
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-sage/10">
+                            <h4 class="font-display text-xl font-medium text-charcoal mb-6">သင့်ရဲ့ စတိုင်လ်က ဘယ်လိုပုံစံမျိုးလဲ။</h4>
+                            <div class="grid md:grid-cols-3 gap-4">
+                                <div class="selection-card p-4 rounded-xl border border-sage/10" onclick="selectStylePersonality('classic')">
+                                    <div class="text-center">
+                                        <div class="w-16 h-16 bg-gradient-to-br from-sage/20 to-dustyrose/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                                            <span class="text-2xl">👗</span>
+                                        </div>
+                                        <h5 class="font-semibold text-charcoal">Classic</h5>
+                                        <p class="text-sm text-charcoal/60">ခေတ်မှီသော, ကျော့ရှင်းသော</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="selection-card p-4 rounded-xl border border-sage/10" onclick="selectStylePersonality('trendy')">
+                                    <div class="text-center">
+                                        <div class="w-16 h-16 bg-gradient-to-br from-sage/20 to-dustyrose/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                                            <span class="text-2xl">✨</span>
+                                        </div>
+                                        <h5 class="font-semibold text-charcoal">Trendy</h5>
+                                        <p class="text-sm text-charcoal/60"> စတိုင်ကျသော, ခေတ်ရှေ့ပြေးသော</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="selection-card p-4 rounded-xl border border-sage/10" onclick="selectStylePersonality('casual')">
+                                    <div class="text-center">
+                                        <div class="w-16 h-16 bg-gradient-to-br from-sage/20 to-dustyrose/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                                            <span class="text-2xl">🌿</span>
+                                        </div>
+                                        <h5 class="font-semibold text-charcoal">Casual</h5>
+                                        <p class="text-sm text-charcoal/60">သက်တောင့်သက်သာရှိသော, ပေါ့ပေါ့ပါးပါးရှိသော</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Occasion Focus -->
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-sage/10">
+                            <h4 class="font-display text-xl font-medium text-charcoal mb-6">ဘယ်လိုနေရာမျိုးတွေ သွားရလေ့ရှိလဲ?</h4>
+                            <div class="grid md:grid-cols-4 gap-4">
+                                <div class="selection-card p-4 rounded-xl border border-sage/10 text-center" onclick="toggleOccasion('work')">
+                                    <span class="text-2xl mb-2 block">💼</span>
+                                    <p class="text-sm font-medium text-charcoal">အလုပ်ခွင် သို့မဟုတ် ကျောင်းတက်စတိုင်လ်</p>
+                                </div>
+                                <div class="selection-card p-4 rounded-xl border border-sage/10 text-center" onclick="toggleOccasion('casual')">
+                                    <span class="text-2xl mb-2 block">☕</span>
+                                    <p class="text-sm font-medium text-charcoal">ပေါ့ပေါ့ပါးပါး နေ့စဉ်ဝတ်စတိုင်လ်</p>
+                                </div>
+                                <div class="selection-card p-4 rounded-xl border border-sage/10 text-center" onclick="toggleOccasion('formal')">
+                                    <span class="text-2xl mb-2 block">✨</span>
+                                    <p class="text-sm font-medium text-charcoal">အခမ်းအနားနှင့် ပွဲတက်စတိုင်လ်</p>
+                                </div>
+                                <div class="selection-card p-4 rounded-xl border border-sage/10 text-center" onclick="toggleOccasion('social')">
+                                    <span class="text-2xl mb-2 block">🎉</span>
+                                    <p class="text-sm font-medium text-charcoal">လူမှုရေးပွဲများနှင့် အားလပ်ရက် အပြင်သွားစတိုင်လ်</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="flex justify-between items-center mt-12 max-w-4xl mx-auto">
+                <button id="prev-btn" onclick="previousStep()" class="hidden bg-white text-charcoal px-6 py-3 rounded-full font-medium border border-sage/20 hover:bg-sage/10 transition-all duration-300">
+                    Previous
+                </button>
+                <div></div>
+                <button id="next-btn" onclick="nextStep()" class="bg-gradient-to-r from-sage to-dustyrose text-cream px-8 py-3 rounded-full font-medium hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                    Next Step
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-charcoal mb-6">
+                    How Our Styling Engine Works
+                </h2>
+                <p class="font-body text-lg text-charcoal/70 max-w-2xl mx-auto">
+                    ကျွန်ုပ်တို့ရဲ့ အဆင့်မြင့်နည်းပညာက ဖက်ရှင်သိပ္ပံနည်းလမ်းတွေကို အသုံးပြုပြီး သင့်အတွက် အလိုက်ဖက်ဆုံးဖြစ်မယ့် စတိုင်လ်တွေကို ရွေးချယ်ပေးမှာပါ။
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-gradient-to-br from-sage to-dustyrose rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-3xl text-cream">📊</span>
+                    </div>
+                    <h3 class="font-display text-xl font-semibold text-charcoal mb-4">Analyze Attributes</h3>
+                    <p class="text-charcoal/70 leading-relaxed">
+                        သင့်ရဲ့ အသက်၊ အရပ်၊ မျက်နှာပုံစံနဲ့ ခန္ဓာကိုယ်အချိုးအစားတွေကို ကြည့်ပြီး သင်နဲ့ ဘယ်လိုစတိုင်လ်မျိုးက အလိုက်ဖက်ဆုံးဖြစ်မလဲဆိုတာကို ကျွန်ုပ်တို့က အသေးစိတ် လေ့လာဆန်းစစ်ပေးပါတယ်။
+                    </p>
+                </div>
+
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-gradient-to-br from-sage to-dustyrose rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-3xl text-cream">🎯</span>
+                    </div>
+                    <h3 class="font-display text-xl font-semibold text-charcoal mb-4">Apply Styling Logic</h3>
+                    <p class="text-charcoal/70 leading-relaxed">
+                        သင့်ရဲ့ ခန္ဓာကိုယ်အချိုးအစားအလိုက် ပိုပြီးကြည့်ကောင်းစေမယ့် ဖက်ရှင်တွေကို အကြံပြုနိုင်ဖို့အတွက် ဖက်ရှင်ကျွမ်းကျင်သူတွေရဲ့ အကြံပြုချက်တွေကို လေ့လာပြီး နည်းပညာနဲ့ပေါင်းစပ်ပြီး စနစ်တကျ ပြင်ဆင်ပေးထားတာ ဖြစ်ပါတယ်။
+                    </p>
+                </div>
+
+                <div class="text-center fade-in">
+                    <div class="w-20 h-20 bg-gradient-to-br from-sage to-dustyrose rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-3xl text-cream">💎</span>
+                    </div>
+                    <h3 class="font-display text-xl font-semibold text-charcoal mb-4">Create Passport</h3>
+                    <p class="text-charcoal/70 leading-relaxed">
+                        သင့်နဲ့ အလိုက်ဖက်ဆုံးဖြစ်မယ့် ဖက်ရှင်နဲ့ ဆံပင်စတိုင်လ် အကြံပြုချက်တွေ အကုန်ပါတဲ့ သင့်ရဲ့ ကိုယ်ပိုင် Style Passport ကို အခုပဲ ရယူလိုက်ပါ။
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-charcoal text-cream py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="flex items-center justify-center space-x-3 mb-6">
+                <div class="w-10 h-10 bg-gradient-to-br from-sage to-dustyrose rounded-full flex items-center justify-center">
+                    <span class="text-cream font-display font-bold text-lg"><img src="resources/logo.jpg" alt="logo" style="width: 80px; height: 40px; border-radius: 50%;"></span>
+                </div>
+                <h3 class="font-display text-2xl font-semibold">Style Architect</h3>
+            </div>
+            <p class="text-cream/70 font-body">
+                © 2025 Style Architect. Crafting personalized style experiences with elegance and precision.
+            </p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

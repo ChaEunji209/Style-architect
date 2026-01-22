@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Our Methodology - Style Architect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        charcoal: '#2C2C2C',
+                        cream: '#F8F6F0',
+                        sage: '#A8B5A0',
+                        dustyrose: '#D4A5A5'
+                    },
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'body': ['Inter', 'sans-serif'],
+                        'accent': ['Cormorant Garamond', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .aurora-bg {
+            background: linear-gradient(45deg, #F8F6F0, #A8B5A0, #F8F6F0, #D4A5A5);
+            background-size: 400% 400%;
+            animation: aurora 15s ease infinite;
+        }
+        
+        @keyframes aurora {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(248, 246, 240, 0.8);
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease;
+        }
+        
+        .methodology-card {
+            transition: all 0.3s ease;
+        }
+        
+        .methodology-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(44, 44, 44, 0.1);
+        }
+        
+        .shape-diagram {
+            transition: all 0.3s ease;
+        }
+        
+        .shape-diagram:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-cream font-body text-charcoal">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-effect border-b border-sage/20">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-sage to-dustyrose rounded-full flex items-center justify-center">
+                        <span class="text-cream font-display font-bold text-lg"><img src="resources/logo.jpg" alt="logo" style="width: 80px; height: 40px; border-radius: 50%;"></span>
+                    </div>
+                    <h1 class="font-display text-2xl font-semibold text-charcoal">Style Architect</h1>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="font-medium text-charcoal hover:text-sage transition-colors">Styling Engine</a>
+                    <a href="passport.html" class="font-medium text-charcoal hover:text-sage transition-colors">Style Passport</a>
+                    <a href="about.html" class="font-medium text-sage">About</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen aurora-bg flex items-center justify-center overflow-hidden">
+        <!-- Floating Elements -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="floating-element absolute top-20 left-10 w-20 h-20 bg-sage/20 rounded-full"></div>
+            <div class="floating-element absolute top-40 right-20 w-16 h-16 bg-dustyrose/20 rounded-full" style="animation-delay: -2s;"></div>
+            <div class="floating-element absolute bottom-32 left-1/4 w-12 h-12 bg-sage/30 rounded-full" style="animation-delay: -4s;"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 py-20 text-center relative z-10">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="font-display text-5xl md:text-7xl font-bold text-charcoal mb-6 leading-tight">
+                    The Science of
+                    <span class="bg-gradient-to-r from-sage to-dustyrose bg-clip-text text-transparent">
+                        Personal Style
+                    </span>
+                </h1>
+                <p class="font-body text-xl md:text-2xl text-charcoal/80 mb-12 leading-relaxed max-w-2xl mx-auto">
+                    သင့်အတွက် အလိုက်ဖက်ဆုံး စတိုင်လ်တွေကို ဖော်ထုတ်ပေးမယ့် ကျွန်ုပ်တို့ရဲ့ နည်းပညာနဲ့ ကျွမ်းကျင်တဲ့ လုပ်ဆောင်ပုံအဆင့်ဆင့်အကြောင်း လေ့လာကြည့်ရအောင်။
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology Overview -->
+    <section class="py-20 bg-cream">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-charcoal mb-6">
+                    Our Styling Methodology
+                </h2>
+                <p class="font-body text-lg text-charcoal/70 max-w-2xl mx-auto">
+                    ဆယ်စုနှစ်နဲ့ချီတဲ့ ဖက်ရှင်အတွေ့အကြုံရှိသော ပညာရှင်များရဲ့ အကြံပြုချက်တွေကို လေ့လာပြီး သိပ္ပံနည်းကျ ခန္ဓာကိုယ်အချိုးအစား တွက်ချက်မှုတွေအပေါ် အခြေခံထားတာကြောင့် သင့်အတွက် တကယ့်ကို အသုံးဝင်မယ့် အကြံပြုချက်တွေကို ပေးနိုင်မှာပါ။
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12 mb-20">
+                <div class="methodology-card bg-white p-8 rounded-3xl shadow-sm border border-sage/10 text-center fade-in">
+                    <div class="w-20 h-20 bg-gradient-to-br from-sage to-dustyrose rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-3xl text-cream">📐</span>
+                    </div>
+                    <h3 class="font-display text-xl font-semibold text-charcoal mb-4">Proportional Analysis</h3>
+                    <p class="text-charcoal/70 leading-relaxed">
+                        သင့်ရဲ့ ပင်ကိုယ်အချိုးအစားတွေနဲ့ ဘယ်လိုဝတ်ရင် အလှဆုံးဖြစ်မလဲဆိုတာကို ဖက်ရှင်သိပ္ပံနည်းလမ်းတွေနဲ့ အသေးစိတ် တွက်ချက်ပေးပါတယ်။
+                    </p>
+                </div>
+
+                <div class="methodology-card bg-white p-8 rounded-3xl shadow-sm border border-sage/10 text-center fade-in">
+                    <div class="w-20 h-20 bg-gradient-to-br from-sage to-dustyrose rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-3xl text-cream">🎯</span>
+                    </div>
+                    <h3 class="font-display text-xl font-semibold text-charcoal mb-4">Balance & Harmony</h3>
+                    <p class="text-charcoal/70 leading-relaxed">
+                        သင့်ရဲ့ ပင်ကိုယ်အလှကို ပိုပေါ်လွင်စေဖို့အတွက် အမြင်အာရုံမှာ မျှတပြီး ကြည့်ကောင်းစေမယ့် အင်္ကျီဒီဇိုင်းတွေနဲ့ ဆံပင်စတိုင်လ်တွေကို ကျွန်ုပ်တို့က အဓိကထား ရွေးချယ်ပေးပါတယ်။
+                    </p>
+                </div>
+
+                <div class="methodology-card bg-white p-8 rounded-3xl shadow-sm border border-sage/10 text-center fade-in">
+                    <div class="w-20 h-20 bg-gradient-to-br from-sage to-dustyrose rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-3xl text-cream">✨</span>
+                    </div>
+                    <h3 class="font-display text-xl font-semibold text-charcoal mb-4">Personal Expression</h3>
+                    <p class="text-charcoal/70 leading-relaxed">
+                        ခန္ဓာကိုယ်အချိုးအစားတင်မကဘဲ သင့်ရဲ့ နေထိုင်မှုပုံစံနဲ့ စိတ်ကြိုက်ဝါသနာတွေကိုပါ ထည့်သွင်းစဉ်းစားပေးတာကြောင့် သင့်အတွက် သီးသန့်ဖြစ်နေမယ့် စတိုင်လ်မျိုးကို ရရှိမှာပါ။
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Body Shape Science -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-display text-4xl font-bold text-charcoal mb-6">
+                    Understanding Body Shapes
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-sage to-dustyrose mx-auto rounded-full mb-8"></div>
+                <p class="font-body text-lg text-charcoal/70 max-w-2xl mx-auto">
+                    ခန္ဓာကိုယ်ပုံစံတစ်ခုစီမှာ သူ့အလှနဲ့သူ ရှိကြပါတယ်။ သင့်ရဲ့ ခန္ဓာကိုယ်ပုံစံကို ဘယ်လိုခွဲခြားမလဲနဲ့ ဘယ်လိုအလှဆင်မလဲဆိုတာကို အခုပဲ လေ့လာကြည့်လိုက်ပါ။
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-5 gap-8 mb-16">
+                <div class="text-center fade-in">
+                    <div class="shape-diagram w-32 h-40 mx-auto mb-4 bg-sage/10 rounded-2xl flex items-center justify-center">
+                        <img src="resources/body-hourglass.jpg" alt="Hourglass" class="w-20 h-28 object-cover rounded-lg">
+                    </div>
+                    <h3 class="font-display text-lg font-semibold text-charcoal mb-2">Hourglass</h3>
+                    <p class="text-sm text-charcoal/60">ခါးသိမ်သိမ်လေးနဲ့ အချိုးအစား ပြေပြစ်တဲ့ပုံစံ။</p>
+                </div>
+
+                <div class="text-center fade-in">
+                    <div class="shape-diagram w-32 h-40 mx-auto mb-4 bg-dustyrose/10 rounded-2xl flex items-center justify-center">
+                        <img src="resources/body-pear.jpg" alt="Pear" class="w-20 h-28 object-cover rounded-lg">
+                    </div>
+                    <h3 class="font-display text-lg font-semibold text-charcoal mb-2">Pear</h3>
+                    <p class="text-sm text-charcoal/60">ပခုံးကျဉ်းပြီး အောက်ပိုင်း (တင်ပါး) ကားတဲ့ပုံစံ။</p>
+                </div>
+
+                <div class="text-center fade-in">
+                    <div class="shape-diagram w-32 h-40 mx-auto mb-4 bg-sage/10 rounded-2xl flex items-center justify-center">
+                        <img src="resources/body-apple.jpg" alt="Apple" class="w-20 h-28 object-cover rounded-lg">
+                    </div>
+                    <h3 class="font-display text-lg font-semibold text-charcoal mb-2">Apple</h3>
+                    <p class="text-sm text-charcoal/60">ဗိုက်ပိုင်း ပြည့်ပြည့်လေးနဲ့ ခြေတံသွယ်သွယ်ပုံစံ။</p>
+                </div>
+
+                <div class="text-center fade-in">
+                    <div class="shape-diagram w-32 h-40 mx-auto mb-4 bg-dustyrose/10 rounded-2xl flex items-center justify-center">
+                        <img src="resources/body-rectangle.jpg" alt="Rectangle" class="w-20 h-28 object-cover rounded-lg">
+                    </div>
+                    <h3 class="font-display text-lg font-semibold text-charcoal mb-2">Rectangle</h3>
+                    <p class="text-sm text-charcoal/60">ခါးသိပ်မရှိဘဲ အပေါ်အောက် တဖြောင့်တည်းရှိတဲ့ပုံစံ။</p>
+                </div>
+
+                <div class="text-center fade-in">
+                    <div class="shape-diagram w-32 h-40 mx-auto mb-4 bg-sage/10 rounded-2xl flex items-center justify-center">
+                        <img src="resources/body-triangle.jpg" alt="Inverted Triangle" class="w-20 h-28 object-cover rounded-lg">
+                    </div>
+                    <h3 class="font-display text-lg font-semibold text-charcoal mb-2">Inverted Triangle</h3>
+                    <p class="text-sm text-charcoal/60">ပခုံးကျယ်ပြီး အောက်ပိုင်း သွယ်သွားတဲ့ပုံစံ။</p>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-sage/10 to-dustyrose/10 p-8 rounded-3xl fade-in">
+                <h3 class="font-display text-2xl font-semibold text-charcoal mb-6 text-center">Key Styling Principles</h3>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-semibold text-charcoal mb-4">✨ Enhancement Strategies</h4>
+                        <ul class="space-y-2 text-charcoal/70">
+                            <li>• ခါးပတ်ပတ်တာမျိုး ဒါမှမဟုတ် ကိုယ်နဲ့ အံကိုက်ဖြစ်မယ့် အင်္ကျီတွေကို ဝတ်ပြီး ခါးလေးသိမ်နေတာကို ပေါ်လွင်အောင် လုပ်ပါ။</li>
+                            <li>• အချိုးအစား ပြေပြစ်သွားအောင် လိုအပ်တဲ့နေရာလေးတွေမှာ အဝတ်အစားကို ပွပွလေး ဒါမှမဟုတ် အလွှာလိုက်လေးတွေ ထည့်ဝတ်ပေးပါ။</li>
+                            <li>• ကိုယ့်ရဲ့ အလှဆုံးနေရာလေးတွေကို လူစိတ်ဝင်စားသွားအောင် အရောင်တောက်တောက်တွေ ဒါမှမဟုတ် ပန်းပြောက်ဒီဇိုင်းလေးတွေ သုံးပြီး ဆွဲဆောင်ပါ။</li>
+                            <li>• ခန္ဓာကိုယ် အချိုးအစားအလိုက် အသားကျနေမယ့် ပျော့ပျောင်းတဲ့ ပိတ်စမျိုးကို ရွေးချယ်ပါ။</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-charcoal mb-4">🎯 Balance Techniques</h4>
+                        <ul class="space-y-2 text-charcoal/70">
+                            <li>• ကိုယ်နဲ့အလိုက်ဖက်ဆုံးဖြစ်အောင် စနစ်တကျ ပြင်ဆင်ဝတ်ဆင်ပြီး ကြည့်ကောင်းအောင် လုပ်ပါ။</li>
+                            <li>• အရပ်ရှည်ပြီး ကိုယ်လုံးသွယ်သွယ်လေး ဖြစ်သွားအောင် ဒေါင်လိုက်အစင်းပါတာတွေကို ရွေးဝတ်ပါ။</li>
+                            <li>• အင်္ကျီတွေကို အလွှာလိုက် ထပ်ဝတ်တာမျိုးနဲ့ အချိုးအစား ပြေပြစ်အောင် ညှိဝတ်ပါ။</li>
+                            <li>• ကိုယ့်ရဲ့ ကိုယ်လုံးကိုယ်ပေါက် ပိုပေါ်လွင်သွားအောင် အသွယ်ဆုံးနေရာလေးတွေကို အသားပေးပြီး ဝတ်ဆင်ပါ။</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Face Shape Analysis -->
+    <section class="py-20 bg-cream">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-display text-4xl font-bold text-charcoal mb-6">
+                    Face Shape & Hair Styling
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-sage to-dustyrose mx-auto rounded-full mb-8"></div>
+                <p class="font-body text-lg text-charcoal/70 max-w-2xl mx-auto">
+                    သင့်မျက်နှာ အချိုးအစားက သင်နဲ့အလိုက်ဖက်ဆုံး ဆံပင် စတိုင် ကိုအဆုံးအဖြတ်ပေးပါတယ်။ သင့် အပြင်အဆင်ကိုလည်း ပြောင်းလဲသွားအောင် ကူညီပေးပါတယ်။
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-5 gap-8 mb-16">
+                <div class="text-center fade-in">
+                    <div class="shape-diagram w-24 h-24 mx-auto mb-4 bg-sage/10 rounded-full flex items-center justify-center">
+                        <img src="resources/face-oval.jpg" alt="Oval" class="w-16 h-16 object-cover rounded-full">
+                    </div>
+                    <h3 class="font-display text-lg font-semibold text-charcoal mb-2">Oval</h3>
+                    <p class="text-sm text-charcoal/60">မျက်နှာအချိုးအစား ညီပြီး စတိုင်လ်အစုံနဲ့ လိုက်ဖက်တဲ့ပုံစံ။</p>
+                </div>
+
+                <div class="text-center fade-in">
+                    <div class="shape-diagram w-24 h-24 mx-auto mb-4 bg-dustyrose/10 rounded-full flex items-center justify-center">
+                        <img src="resources/face-round.jpg" alt="Round" class="w-16 h-16 object-cover rounded-full">
+                    </div>
+                    <h3 class="font-display text-lg font-semibold text-charcoal mb-2">Round</h3>
+                    <p class="text-sm text-charcoal/60">ပါးပြည့်ပြည့်လေးနဲ့ မျက်နှာဝိုင်းဝိုင်းပုံစံ။</p>
+                </div>
+
+                <div class="text-center fade-in">
+                    <div class="shape-diagram w-24 h-24 mx-auto mb-4 bg-sage/10 rounded-full flex items-center justify-center">
+                        <img src="resources/face-square.jpg" alt="Square" class="w-16 h-16 object-cover rounded-full">
+                    </div>
+                    <h3 class="font-display text-lg font-semibold text-charcoal mb-2">Square</h3>
+                    <p class="text-sm text-charcoal/60">မေးရိုးပေါ်လွင်ပြီး လေးထောင့်ကျကျပုံစံ။</p>
+                </div>
+
+                <div class="text-center fade-in">
+                    <div class="shape-diagram w-24 h-24 mx-auto mb-4 bg-dustyrose/10 rounded-full flex items-center justify-center">
+                        <img src="resources/face-heart.jpg" alt="Heart" class="w-16 h-16 object-cover rounded-full">
+                    </div>
+                    <h3 class="font-display text-lg font-semibold text-charcoal mb-2">Heart</h3>
+                    <p class="text-sm text-charcoal/60">နဖူးကျယ်ပြီး မေးစေ့သွယ်သွယ်ပုံစံ။</p>
+                </div>
+
+                <div class="text-center fade-in">
+                    <div class="shape-diagram w-24 h-24 mx-auto mb-4 bg-sage/10 rounded-full flex items-center justify-center">
+                        <img src="resources/face-diamond.jpg" alt="Diamond" class="w-16 h-16 object-cover rounded-full">
+                    </div>
+                    <h3 class="font-display text-lg font-semibold text-charcoal mb-2">Diamond</h3>
+                    <p class="text-sm text-charcoal/60">ပါးရိုးမြင့်မြင့်နဲ့ မေးစေ့သွယ်တဲ့ပုံစံ။</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-sage/10 fade-in">
+                <h3 class="font-display text-2xl font-semibold text-charcoal mb-6 text-center">Hair Styling Principles</h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-sage to-dustyrose rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl text-cream">📏</span>
+                        </div>
+                        <h4 class="font-semibold text-charcoal mb-3">Length Strategy</h4>
+                        <p class="text-sm text-charcoal/70">
+                            ကြည့်ကောင်းပြီး ဟန်ချက်ညီစေဖို့ သင့်မျက်နှာကျနပေါ် မူတည်၍ ဆံပင်အရှည်ကို ရွေးချယ်ပါ။ ဆံပင်အရှည်ထားခြင်းက ဝိုင်းသောမျက်နှာများကို ရှည်မျောသွားစေပြီး၊ ဆံပင်အတိုညှပ်ခြင်းက သေးသွယ်ကျဉ်းမြောင်းသော မျက်နှာများကို ပိုမိုပြည့်စုံကျယ်ပြန့်သွားစေနိုင်ပါတယ်။
+                        </p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-sage to-dustyrose rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl text-cream">↗️</span>
+                        </div>
+                        <h4 class="font-semibold text-charcoal mb-3">Parting Technique</h4>
+                        <p class="text-sm text-charcoal/70">
+                            ဆံပင်ခွဲကြောင်း ထားသိုပုံသည် မျက်နှာအချိုးအစားကို ပြောင်းလဲစေနိုင်ပါတယ်။ အလယ်ခွဲခြင်းက မျက်နှာကို ဘယ်ညာညီညာပုံစံ (Symmetry) ဖြစ်စေပြီး၊ ဘေးခွဲခြင်းကတော့ ပုံစံမတူသော အလှတရားနှင့် စိတ်ဝင်စားဖွယ် ဆွဲဆောင်မှုကို ဖြစ်စေပါတယ်။
+                        </p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-sage to-dustyrose rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl text-cream">🌊</span>
+                        </div>
+                        <h4 class="font-semibold text-charcoal mb-3">Texture Impact</h4>
+                        <p class="text-sm text-charcoal/70">
+                            ဆံပင်သားအနေအထားက ဆံပင်၏ ထုထည်နှင့် လှုပ်ရှားမှုကို သက်ရောက်မှုရှိပါတယ်။ ဆံပင်အဖြောင့်စတိုင်လ်တွေက ပြောင်လက်ချောမွေ့တဲ့ အသွင်ကို ဆောင်စေပြီး၊ လှိုင်းတွန့် (သို့မဟုတ်) လိပ်ထားသော ဆံကေသာများက နူးညံ့မှုနှင့် ပိုမိုထင်ရှားပေါ်လွင်သော အလှကို တိုးစေပါတယ်။
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expert Insights -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-display text-4xl font-bold text-charcoal mb-6">
+                    Expert Styling Insights
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-sage to-dustyrose mx-auto rounded-full mb-8"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="fade-in">
+                    <div class="bg-gradient-to-br from-sage/10 to-dustyrose/10 p-8 rounded-3xl">
+                        <div class="text-4xl mb-4">💡</div>
+                        <h3 class="font-display text-xl font-semibold text-charcoal mb-4">The Rule of Thirds</h3>
+                        <p class="text-charcoal/80 leading-relaxed mb-4">
+                            သင့် ခန္တာကိုယ်ကို နှစ်ပိုင်းထက် သုံးပိုင်းခွဲခြားပါ။ ဒါက ပိုစိတ်ဝင်စားဖွယ် အချိုးအစားတွေ ဖန်တီးပေးပြီး သင့်ကို အရပ် ပိုရှည်ပုံပေါ် စေပြီး မျှတသွားစေပါတယ်။
+                        </p>
+                        <p class="text-sm text-charcoal/60 font-accent">
+                            "လိုက်ဖက်မှုအရှိဆုံး ဝတ်စုံတွေဟာ အရောင်စပ်တာပဲဖြစ်ဖြစ်၊ အထပ်ထပ်ဝတ်တာပဲဖြစ်ဖြစ်၊ ၁/၃ နှင့် ၂/၃ အချိုးအစားအတိုင်း ပြင်ဆင်ဝတ်ဆင်ကြတာ ဖြစ်ပါတယ်။"
+                        </p>
+                    </div>
+                </div>
+
+                <div class="fade-in">
+                    <div class="bg-gradient-to-br from-dustyrose/10 to-sage/10 p-8 rounded-3xl">
+                        <div class="text-4xl mb-4">🎨</div>
+                        <h3 class="font-display text-xl font-semibold text-charcoal mb-4">Color Psychology</h3>
+                        <p class="text-charcoal/80 leading-relaxed mb-4">
+                            အရောင်များ၏ တည်နေရာသည် အမြင်အာရုံကို ပြောင်းလဲစေနိုင်ပါတယ်။ အရောင်ရင့်များက ခန္ဓာကိုယ်ကို သေးသွယ်သွားစေပြီး၊ အရောင်ဖျော့များက ပိုမိုထင်ရှားစေပါတယ်။ အရောင်များကို စနစ်တကျ အထားအသိုလုပ်ခြင်းဖြင့် သင့်ရဲ့ ခန္ဓာကိုယ်အချိုးအစားကို ပြန်လည်ပုံဖော်နိုင်ပါတယ်။
+                        </p>
+                        <p class="text-sm text-charcoal/60 font-accent">
+                            "တစ်ဖက်လူရဲ့ အမြင်ကို သင်ဆွဲဆောင်ချင်တဲ့နေရာရောက်အောင် အရောင်ကို ရည်ရွယ်ချက်ရှိရှိ အသုံးပြုပါ။ ဥပမာ- တောက်ပတဲ့ ခါးပတ်က ခါးကိုပေါ်လွင်စေပြီး၊ ဘေးဘက်တွေမှာ အရောင်ရင့်တာက သေးသွယ်တဲ့အသွင်ကို ဆောင်စေပါတယ်။"
+                        </p>
+                    </div>
+                </div>
+
+                <div class="fade-in">
+                    <div class="bg-gradient-to-br from-sage/10 to-dustyrose/10 p-8 rounded-3xl">
+                        <div class="text-4xl mb-4">📏</div>
+                        <h3 class="font-display text-xl font-semibold text-charcoal mb-4">Proportion Play</h3>
+                        <p class="text-charcoal/80 leading-relaxed mb-4">
+                            မိမိရဲ့ ဒေါင်လိုက်အချိုးအစားကို နားလည်ခြင်းက ဝတ်စုံတွေရဲ့ အရှည်နဲ့ အဖြတ်အတောက်တွေကို မှန်ကန်စွာ ရွေးချယ်နိုင်ဖို့ ကူညီပေးပါတယ်။
+                        </p>
+                        <p class="text-sm text-charcoal/60 font-accent">
+                            "အရပ်ပုတဲ့ အမျိုးသမီးတွေအတွက် ခါးမြင့်ဘောင်းဘီနဲ့ အင်္ကျီအပုလေးတွေက ပိုလိုက်ဖက်ပြီး၊ အရပ်ရှည်တဲ့ အမျိုးသမီးတွေကတော့ အမျိုးမျိုးသော အချိုးအစားတွေကို စိတ်ကြိုက်ပြောင်းလဲ ဝတ်ဆင်နိုင်ပါတယ်။"
+                        </p>
+                    </div>
+                </div>
+
+                <div class="fade-in">
+                    <div class="bg-gradient-to-br from-dustyrose/10 to-sage/10 p-8 rounded-3xl">
+                        <div class="text-4xl mb-4">✨</div>
+                        <h3 class="font-display text-xl font-semibold text-charcoal mb-4">Confidence Factor</h3>
+                        <p class="text-charcoal/80 leading-relaxed mb-4">
+                            အကောင်းဆုံးဆိုတဲ့ စတိုင်လ်လမ်းညွှန်ချက်တွေဟာ ယုံကြည်မှုမရှိရင် အဓိပ္ပာယ်မရှိပါဘူး။ သင့်ကို စိတ်ကျေနပ်မှု အပေးနိုင်ဆုံးအရာကိုသာ ဝတ်ဆင်ပါ၊ ဒါဆိုရင် သင်ဟာ အမြဲတမ်း ကြည့်ကောင်းနေပါလိမ့်မယ်။
+                        </p>
+                        <p class="text-sm text-charcoal/60 font-accent">
+                            "အရေးကြီးဆုံး အသုံးအဆောင်ပစ္စည်းကတော့ ယုံကြည်မှုပါပဲ။ သင်ဝတ်ထားတဲ့အရာအပေါ် သင်ကိုယ်တိုင် သဘောကျနေတဲ့အခါ သင့်ရဲ့ ဟန်ပန်က အလိုအလျောက် ပေါ်လွင်နေပါလိမ့်မယ်။"
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-cream">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="font-display text-4xl font-bold text-charcoal mb-6">
+                    Frequently Asked Questions
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-sage to-dustyrose mx-auto rounded-full"></div>
+            </div>
+
+            <div class="space-y-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-sage/10 fade-in">
+                    <h3 class="font-display text-lg font-semibold text-charcoal mb-3">အကြံပြုချက်တွေက ဘယ်လောက်ထိ တိကျမှုရှိသလဲ?</h3>
+                    <p class="text-charcoal/70 leading-relaxed">
+                        ကျွန်ုပ်တို့ရဲ့ အကြံပြုချက်တွေကို ခိုင်မာတဲ့ ဖက်ရှင်သိပ္ပံ သဘောတရားတွေနဲ့ ဆယ်စုနှစ်များစွာကြာ အတွေ့အကြုံရှိတဲ့ စတိုင်လ်ကျွမ်းကျင်သူတွေရဲ့ အယူအဆတွေအပေါ် အခြေခံထားတာပါ။ ဒါပေမဲ့ နောက်ဆုံးမှာတော့ ကိုယ်ပိုင်စတိုင်လ်ဆိုတာ မိမိကိုယ်ကိုယ် ယုံကြည်မှုရှိစေပြီး မိမိရဲ့ ပင်ကိုယ်ဟန်နဲ့ အလိုက်ဖက်ဆုံးဖြစ်မယ့်အရာကို ဆိုလိုတာပါ။
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-sage/10 fade-in">
+                    <h3 class="font-display text-lg font-semibold text-charcoal mb-3">ခန္ဓာကိုယ်ပုံစံ တစ်မျိုးထက်မကတဲ့ ဝိသေသလက္ခဏာတွေ ကျွန်တော့်မှာ ရှိနေနိုင်သလား?</h3>
+                    <p class="text-charcoal/70 leading-relaxed">
+                        ရှိနိုင်တာပေါ့။ လူအများစုဟာ ခန္ဓာကိုယ်ပုံစံ အမျိုးမျိုး ရောနှောနေတတ်ကြပါတယ်။ သင့်ရဲ့ အဓိကအချိုးအစားနဲ့ အနီးစပ်ဆုံးတူတဲ့ ပုံစံကို ရွေးချယ်ပြီး တခြားအမျိုးအစားတွေထဲက အကြံပြုချက်တွေကိုလည်း လိုအပ်သလို ပေါင်းစပ်အသုံးပြုနိုင်ပါတယ်။
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-sage/10 fade-in">
+                    <h3 class="font-display text-lg font-semibold text-charcoal mb-3">ဘယ်အမျိုးအစားထဲမှာမှ ကွက်တိမဝင်နေဘူးဆိုရင် ဘယ်လိုလုပ်ရမလဲ?</h3>
+                    <p class="text-charcoal/70 leading-relaxed">
+                        ဒီအမျိုးအစား သတ်မှတ်ချက်တွေဟာ လမ်းညွှန်ချက်တွေသာဖြစ်ပြီး တင်းကျပ်တဲ့ စည်းမျဉ်းတွေမဟုတ်ပါဘူး။ ဒါတွေကို အခြေခံအချက်အလက်အနေနဲ့ပဲ အသုံးပြုပြီး သင့်ရဲ့ ထူးခြားတဲ့ ခန္ဓာကိုယ်ပုံစံနဲ့အညီ လိုက်လျောညီထွေဖြစ်အောင် ပြင်ဆင်ဝတ်ဆင်ပါ။ အဓိက ပန်းတိုင်ကတော့ ယုံကြည်မှုရှိပြီး သက်သောင့်သက်သာ ဖြစ်နေဖို့ပါပဲ။
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-sage/10 fade-in">
+                    <h3 class="font-display text-lg font-semibold text-charcoal mb-3">ကျွန်တော့်ရဲ့ Style Passport ကို ဘယ်နှကြိမ်လောက် Update လုပ်သင့်သလဲ?</h3>
+                    <p class="text-charcoal/70 leading-relaxed">
+                        သင့်ရဲ့ အခြေခံခန္ဓာကိုယ်ပုံစံက ပြောင်းလဲခြင်းမရှိပေမဲ့ စတိုင်လ်အကြိုက်တွေကတော့ ပြောင်းလဲသွားနိုင်ပါတယ်။ ဒါကြောင့် ရာသီအလိုက် (သို့မဟုတ်) သင့်ရဲ့ လူနေမှုဘဝပုံစံ သိသိသာသာ ပြောင်းလဲသွားတဲ့အခါမျိုးမှာ သင့်ရဲ့ Style Passport ကို ပြန်လည်စစ်ဆေးကြည့်ဖို့ အကြံပြုလိုပါတယ်။
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-sage/10 fade-in">
+                    <h3 class="font-display text-lg font-semibold text-charcoal mb-3">ဒီအကြံပြုချက်တွေက အသက်အရွယ်နဲ့ လိုက်ဖက်မှုရှိပါ့မလား?</h3>
+                    <p class="text-charcoal/70 leading-relaxed">
+                        ဟုတ်ကဲ့၊ ရှိပါတယ်။ ကျွန်ုပ်တို့ရဲ့ စနစ်ဟာ အသက်အရွယ်ကို အဓိကအချက်အနေနဲ့ ထည့်သွင်းစဉ်းစားထားပါတယ်။ ကလေးငယ်တွေအတွက် ချစ်စရာကောင်းတဲ့ စတိုင်လ်တွေကနေ လူကြီးတွေအတွက် ခန့်ညားထည်ဝါတဲ့ အသွင်အပြင်တွေအထိ အသက်အရွယ်နဲ့ လိုက်ဖက်ပြီး ကြည့်ကောင်းစေမယ့် အကြံပြုချက်တွေကို ပံ့ပိုးပေးထားပါတယ်။
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="fade-in">
+                <h2 class="font-display text-4xl font-bold text-charcoal mb-6">
+                    Ready to Discover Your Perfect Style?
+                </h2>
+                <p class="font-body text-lg text-charcoal/70 mb-8 max-w-2xl mx-auto">
+                    သင့်ရဲ့ ကိုယ်ပိုင်အလှနဲ့ စိတ်ကြိုက်ပုံစံတွေအတိုင်း သီးသန့်ဖန်တီးပေးထားတဲ့ စတိုင်လ်လမ်းညွှန်ချက်တွေရဲ့ ထူးခြားမှုကို ခံစားကြည့်ပါ။
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <a href="index.html" class="bg-gradient-to-r from-sage to-dustyrose text-cream px-8 py-4 rounded-full font-medium text-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                        Create Your Style Passport
+                    </a>
+                    <a href="passport.html" class="border-2 border-charcoal text-charcoal px-8 py-4 rounded-full font-medium text-lg hover:bg-charcoal hover:text-cream transition-all duration-300">
+                        View Sample Passport
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-charcoal text-cream py-12">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="flex items-center justify-center space-x-3 mb-6">
+                <div class="w-10 h-10 bg-gradient-to-br from-sage to-dustyrose rounded-full flex items-center justify-center">
+                    <span class="text-cream font-display font-bold text-lg"><img src="resources/logo.jpg" alt="logo" style="width: 80px; height: 40px; border-radius: 50%;"></span>
+                </div>
+                <h3 class="font-display text-2xl font-semibold">Style Architect</h3>
+            </div>
+            <p class="text-cream/70 font-body">
+                © 2025 Style Architect. Crafting personalized style experiences with elegance and precision.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize animations and interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            setupIntersectionObserver();
+            initializeAnimations();
+        });
+
+        function setupIntersectionObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        function initializeAnimations() {
+            // Animate hero elements
+            anime({
+                targets: '.aurora-bg h1',
+                opacity: [0, 1],
+                translateY: [50, 0],
+                duration: 1000,
+                easing: 'easeOutQuart',
+                delay: 300
+            });
+
+            // Animate methodology cards
+            anime({
+                targets: '.methodology-card',
+                opacity: [0, 1],
+                translateY: [30, 0],
+                duration: 800,
+                easing: 'easeOutQuart',
+                delay: anime.stagger(200, {start: 600})
+            });
+
+            // Animate shape diagrams
+            anime({
+                targets: '.shape-diagram',
+                scale: [0.8, 1],
+                opacity: [0, 1],
+                duration: 600,
+                easing: 'easeOutQuart',
+                delay: anime.stagger(100, {start: 1000})
+            });
+        }
+    </script>
+</body>
+</html>

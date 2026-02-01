@@ -89,10 +89,45 @@
             transform: translateY(0);
             transition: all 0.6s ease;
         }
+
+                /* Hamburger Menu Animations */
+        #mobile-menu-btn.active .hamburger-line:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        
+        #mobile-menu-btn.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        
+        #mobile-menu-btn.active .hamburger-line:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+        
+        #mobile-menu {
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Prevent body scroll when mobile menu is open */
+        body.menu-open {
+            overflow: hidden;
+        }
+
     </style>
 </head>
 <body class="bg-cream font-body text-charcoal">
-    <!-- Navigation -->
+        <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 glass-effect border-b border-sage/20">
         <div class="max-w-7xl mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
@@ -102,10 +137,28 @@
                     </div>
                     <h1 class="font-display text-2xl font-semibold text-charcoal">Style Architect</h1>
                 </div>
+                
+                <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8">
                     <a href="https://chroma-glow.netlify.app/chroma%20glow.html" class="font-medium text-charcoal hover:text-sage transition-colors">Styling Engine</a>
                     <a href="passport.html" class="font-medium text-charcoal hover:text-sage transition-colors">Style Passport</a>
                     <a href="about.html" class="font-medium text-charcoal hover:text-sage transition-colors">About</a>
+                </div>
+
+                <!-- Hamburger Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none" aria-label="Toggle menu">
+                    <span class="hamburger-line w-6 h-0.5 bg-charcoal transition-all duration-300 origin-center"></span>
+                    <span class="hamburger-line w-6 h-0.5 bg-charcoal transition-all duration-300 origin-center"></span>
+                    <span class="hamburger-line w-6 h-0.5 bg-charcoal transition-all duration-300 origin-center"></span>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-sage/20 pt-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="https://chroma-glow.netlify.app/chroma%20glow.html" class="font-medium text-charcoal hover:text-sage transition-colors py-2 px-4 rounded-lg hover:bg-sage/10">Styling Engine</a>
+                    <a href="passport.html" class="font-medium text-charcoal hover:text-sage transition-colors py-2 px-4 rounded-lg hover:bg-sage/10">Style Passport</a>
+                    <a href="about.html" class="font-medium text-charcoal hover:text-sage transition-colors py-2 px-4 rounded-lg hover:bg-sage/10">About</a>
                 </div>
             </div>
         </div>
@@ -157,15 +210,15 @@
             </div>
 
             <!-- Progress Indicator -->
-            <div class="flex justify-center mb-12 fade-in">
-                <div class="flex items-center space-x-4">
-                    <div class="step-indicator w-12 h-12 rounded-full bg-sage/20 flex items-center justify-center text-sage font-semibold" data-step="1">1</div>
+            <div class="flex justify-center mb-12 fade-in overflow-hidden">
+                <div class="flex items-center space-x-4 max-w-full overflow-x-auto px-4">
+                    <div class="step-indicator w-12 h-12 rounded-full bg-sage/20 flex items-center justify-center text-sage font-semibold flex-shrink-0 whitespace-nowrap" data-step="1">1</div>
                     <div class="w-16 h-1 bg-sage/20 rounded"></div>
-                    <div class="step-indicator w-12 h-12 rounded-full bg-sage/20 flex items-center justify-center text-sage font-semibold" data-step="2">2</div>
+                    <div class="step-indicator w-12 h-12 rounded-full bg-sage/20 flex items-center justify-center text-sage font-semibold flex-shrink-0 whitespace-nowrap" data-step="2">2</div>
                     <div class="w-16 h-1 bg-sage/20 rounded"></div>
-                    <div class="step-indicator w-12 h-12 rounded-full bg-sage/20 flex items-center justify-center text-sage font-semibold" data-step="3">3</div>
+                    <div class="step-indicator w-12 h-12 rounded-full bg-sage/20 flex items-center justify-center text-sage font-semibold flex-shrink-0 whitespace-nowrap" data-step="3">3</div>
                     <div class="w-16 h-1 bg-sage/20 rounded"></div>
-                    <div class="step-indicator w-12 h-12 rounded-full bg-sage/20 flex items-center justify-center text-sage font-semibold" data-step="4">4</div>
+                    <div class="step-indicator w-12 h-12 rounded-full bg-sage/20 flex items-center justify-center text-sage font-semibold flex-shrink-0 whitespace-nowrap" data-step="4">4</div>
                 </div>
             </div>
 
@@ -481,6 +534,41 @@
             </p>
         </div>
     </footer>
+
+        <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    mobileMenu.classList.toggle('hidden');
+                    document.body.classList.toggle('menu-open');
+                });
+
+                // Close menu when clicking on links
+                const mobileLinks = mobileMenu.querySelectorAll('a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        menuBtn.classList.remove('active');
+                        mobileMenu.classList.add('hidden');
+                        document.body.classList.remove('menu-open');
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!menuBtn.contains(event.target) && !mobileMenu.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
+                        menuBtn.classList.remove('active');
+                        mobileMenu.classList.add('hidden');
+                        document.body.classList.remove('menu-open');
+                    }
+                });
+            }
+        });
+    </script>
 
     <script src="main.js"></script>
 </body>
